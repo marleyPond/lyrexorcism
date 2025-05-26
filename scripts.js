@@ -138,7 +138,17 @@ function loadPoems(now) {
     document.getElementById('smButton').addEventListener("click", toggleSM);
 }
 
-function decorateTitle(lyric_title, link, author, release_date, genre) {  
+function decorateTitle(lyric_title, link, author, release_date, genre) {
+    release_date = release_date.toString()
+    var date = new Date(release_date)
+    date.setFullYear(
+        release_date.substring(0,4),
+        release_date.substring(4,6),
+        release_date.substring(6,8)
+    )
+    var options = {year: 'numeric', month: 'long', day: 'numeric'};
+    var pretty_date = `${date.toLocaleString('en-US', options)}`;
+
     var a = `<a class="not_stylish" href=/lyrics/`+link+`.html>`;
     if(link.includes(":"))
         a = `<a class="not_stylish" href=`+link+`>`;
@@ -152,7 +162,7 @@ function decorateTitle(lyric_title, link, author, release_date, genre) {
                         </tr>
                         <tr style="color: #dddddd">
                             <td style="text-align: center;">` + genre + `</td>
-                            <td style="text-align: center;">` + release_date + `</td>
+                            <td style="text-align: center;">` + pretty_date + `</td>
                         </tr>
                     </table>
                 </div>
@@ -208,13 +218,13 @@ function toggleSM() {   //for drop class above
     }
 }
 
-function prepareJSON() {    //top-down based on release!!  
+function prepareJSON() {    //yearMonthDay, where 00 => January and 01->1st
     return {
         "all": 
         [   
             {
                 "title": "Active Listening and Reactive Narrative Design", 
-                "releaseDate": 20240601,
+                "releaseDate": 20240501,
                 "fileName": "template", 
                 "author": "Marley Pond",
                 "genre": "Metal",
