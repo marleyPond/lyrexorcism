@@ -138,9 +138,9 @@ function loadPoems(now) {
 }
 
 function decorateTitle(lyric_title, link, author) {  
-    var a = `<a class="not_stylish" href=/lyrics/"`+link+`.html">`;
+    var a = `<a class="not_stylish" href=/lyrics/`+link+`.html>`;
     if(link.includes(":"))
-        a = `<a class="not_stylish" href="`+link+`">`;
+        a = `<a class="not_stylish" href=`+link+`>`;
     return a + `
             <div class="banner pop" style="padding: 10px 0;">
                 <div>

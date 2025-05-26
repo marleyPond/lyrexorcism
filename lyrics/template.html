@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title id="title">Branching Pathology 1 | </title>
+        <title id="title"></title>
 
         <!-- Load external CSS styles -->
         <link rel="stylesheet" href="/styles.css">
@@ -13,8 +13,8 @@
         <!--Load scripts-->
         <script src="/components/header.js" type="text/javascript" defer></script>
         <script src="/components/footer.js" type="text/javascript" defer></script>
-        <script src="/components/violators.js" type="text/javascript" defer></script>
-        <script src="/blog/js/blog1.js" type="text/javascript" defer></script> <!--Alter this 1/1-->
+        <script src="/components/lyricbody.js" type="text/javascript" defer></script>
+        <script src="/lyrics/js/template.js" type="text/javascript" defer></script> <!--Alter this 1/1-->
 
     </head>
 
@@ -22,12 +22,7 @@
    
     <body onLoad="loadContent();">
         
-        <div class="container-div">
-            <h2 id='blog-title' class="title"></h2>           
-            <h3 id='blog-subtitle' style="font-weight:normal;"></h3>
-            <p id='blog-date'></p>
-            <div id="blog-content"></div>
-        </div>
+        <lyric-body-component></lyric-body-component>
         
     </body>
 
