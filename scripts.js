@@ -86,7 +86,8 @@ function loadBlogs(data, filter) {
     /*load new blogs to top of list*/
 
     for(var i = 0; i < Math.min(galleryDisplayAmount, final); i++){
-        blogStack += decorateTitle(filterData[i].title, filterData[i].fileName, filterData[i].author);
+        blogStack += decorateTitle(filterData[i].title, filterData[i].fileName, filterData[i].author,
+        filterData[i].releaseDate, filterData[i].genre);
     };
 
     document.getElementById("blog-content").innerHTML = blogStack;
@@ -137,15 +138,23 @@ function loadPoems(now) {
     document.getElementById('smButton').addEventListener("click", toggleSM);
 }
 
-function decorateTitle(lyric_title, link, author) {  
+function decorateTitle(lyric_title, link, author, release_date, genre) {  
     var a = `<a class="not_stylish" href=/lyrics/`+link+`.html>`;
     if(link.includes(":"))
         a = `<a class="not_stylish" href=`+link+`>`;
     return a + `
             <div class="banner pop" style="padding: 10px 0;">
                 <div>
-                    <span>` + lyric_title + `</span>
-                    <span style="float:right;">`+author+`</span>
+                    <table style="width: 100%;">
+                        <tr style="font-weight: bolder;">
+                            <td style="text-align: center;">` + lyric_title + `</td>
+                            <td style="text-align: center;">` + author + `</td>
+                        </tr>
+                        <tr style="color: #dddddd">
+                            <td style="text-align: center;">` + genre + `</td>
+                            <td style="text-align: center;">` + release_date + `</td>
+                        </tr>
+                    </table>
                 </div>
                 <!--
                 <div>
@@ -208,48 +217,56 @@ function prepareJSON() {    //top-down based on release!!
                 "releaseDate": 20240601,
                 "fileName": "template", 
                 "author": "Marley Pond",
+                "genre": "Metal",
             },
             {
                 "title": "Active Listening and Reactive Narrative Design", 
                 "releaseDate": 20240601,
                 "fileName": "template", 
                 "author": "Marley Pond",
+                "genre": "Metal",
             },
             {
                 "title": "Active Listening and Reactive Narrative Design", 
                 "releaseDate": 20240601,
                 "fileName": "template", 
                 "author": "Marley Pond",
+                "genre": "Metal",
             },
             {
                 "title": "Active Listening and Reactive Narrative Design", 
                 "releaseDate": 20240601,
                 "fileName": "template", 
                 "author": "Marley Pond",
+                "genre": "Metal",
             },
             {
                 "title": "Active Listening and Reactive Narrative Design", 
                 "releaseDate": 20240601,
                 "fileName": "template", 
                 "author": "Marley Pond",
+                "genre": "Metal",
             },
             {
                 "title": "Active Listening and Reactive Narrative Design", 
                 "releaseDate": 20240601,
                 "fileName": "template", 
                 "author": "Marley Pond",
+                "genre": "Metal",
             },
             {
                 "title": "Active Listening and Reactive Narrative Design", 
                 "releaseDate": 20240601,
                 "fileName": "template", 
                 "author": "Marley Pond",
+                "genre": "Metal",
             },
             {
                 "title": "Active Listening and Reactive Narrative Design", 
                 "releaseDate": 20240601,
                 "fileName": "template", 
                 "author": "Marley Pond",
+                "genre": "Metal",
             },
         ]
     };

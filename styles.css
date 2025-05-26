@@ -143,12 +143,12 @@ figure {
 
 .pop {
     background-color:black;
-    transition: max-width 0.5s ease-in-out, background-color 0.5s ease-in-out;
+    transition: max-width 0.5s ease-out, background-color 0.5s ease-out;
 }
 
 .pop:hover {
     max-width: 95%;
-    background-color:mediumpurple;
+    background-color:palevioletred;
 }
 
 figure:hover {
