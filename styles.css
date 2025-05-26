@@ -1,0 +1,365 @@
+:root{
+    --mpblack: #191719;
+    --mpwhite: #FFFFFFF;
+    --mpbrown: #919387;
+    --mppurple: #695E67;
+    --mpviolet: #8E8C9B;
+    /*get new color scheme, but root scope is global, and use with var(--mpblack)*/
+}
+
+/* git calendar overrides*/
+.calendar {
+    min-height: 0;
+    width: auto;
+    max-width: 1091px;
+}
+
+.sneaky {
+    visibility: hidden;
+}
+
+hr {
+    margin: 10px 50px;
+}
+
+pre {
+    white-space: pre-wrap;
+    font-size: large;
+}
+
+p {
+    padding-left: 30px;
+    font-size: large;
+    font-family: bahnschrift;
+}
+
+button#smButton {
+    margin: 2px;
+    border-radius: 30px;
+}
+
+i:hover {
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+footer {
+    padding: 10px;
+    padding-top: 20px;
+    background-color: black;
+    text-align: center;
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+body {
+    background-color:var(--mpwhite);
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1091px;
+    font-family: bahnschrift;
+}
+
+span {
+    padding: 0px 10px;
+}
+
+#blog-content {
+    font-size: large;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+a.not_stylish {
+    color: white;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.grid a{
+    color: white;
+    text-decoration: none;
+    overflow: hidden;
+} 
+
+.trbackground {
+    float:right;
+    position: relative;
+    top: 0;
+    right:0;
+    z-index: 0;
+    opacity: .25;
+    max-width: 100%;
+    height: auto;
+}
+
+.cover {
+    max-width: 100%;
+    height: auto;
+}
+
+figure {
+    margin:0;
+    width: 100%;
+    background: radial-gradient(circle, rgba(136,136,136,1) 0%, rgba(0,0,0,1) 100%, rgba(180,180,183,1) 100%);
+    max-width: 310px;
+    height:auto;
+    max-height: 310px;
+}
+
+.textover img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.5s;
+}
+
+
+.textover img:hover {
+    transform: perspective(200px) 
+    translateZ(10px);/*scale(1.025);*/
+}
+
+.pop {
+    background-color:black;
+    transition: max-width 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+.pop:hover {
+    max-width: 95%;
+    background-color:mediumpurple;
+}
+
+figure:hover {
+    padding: 4px;
+    border-style: dashed;
+    border-color: white;
+}
+
+fancybanner:hover {
+    padding: 4px;
+    border-style: dashed;
+    border-color: rgb(182, 60, 182);
+}
+
+/* animation example
+@keyframes textoverHover {
+  from {transform: scale(1.0)}
+  to {transform: scale(1.025)}
+}
+
+.textover img:hover {
+    animation-name: textoverHover;
+    animation-duration: 2s; 
+}*/
+
+section img {
+    position: absolute;
+    animation: fade 1s infinite alternate;
+    max-width: 1091px;
+    right: 0;
+    left: 0;
+    align-content: center;
+}
+
+.bottom {
+    animation-delay: 1s;
+}
+
+/*example use
+<section>
+  <img class="bottom" src="img1">
+  <img src="img2">
+</section>
+*/
+
+@keyframes fade {
+    0% {opacity: 1; }
+    55% {opacity: 1; }
+    75% {opacity: 0; }
+    100% {opacity: 0; }
+}
+
+@keyframes switch {
+    0% {opacity: 1; }
+    49% {opacity: 1; }
+    50% {opacity: 0; }
+    100% {opacity: 0; }
+}
+
+.shimmer {
+    -webkit-mask-image: linear-gradient(45deg,#000 25%,rgba(0,0,0,.2) 50%,#000 75%);
+    mask-image: linear-gradient(45deg,#000 25%,rgba(0,0,0,.2) 50%,#000 75%);
+    -webkit-mask-size: 800%;
+    mask-size: 800%;
+    -webkit-mask-position: 0;
+    mask-position: 0;
+    margin-bottom:0;
+}
+
+.shimmer:hover {
+    /*border-style: dashed;
+    border-width: 4px;
+    border-color: white;*/
+    transition: mask-position 1.25s ease,-webkit-mask-position 1.25s ease;
+    -webkit-mask-position: 100%;
+    mask-position: 100%;
+    opacity: 1;
+}
+
+/*Filter styles*/
+/* .saturate { filter: saturate(3); }
+.grayscale { filter: grayscale(100%); }
+.contrast { filter: contrast(160%); }
+.brightness { filter: brightness(0.25); }
+.blur { filter: blur(3px); }
+.invert { filter: invert(100%); }
+.sepia { filter: sepia(100%); }
+.huerotate { filter: hue-rotate(180deg); }
+.rss.opacity { filter: opacity(50%); } */
+
+.textover {
+    position: relative;
+    text-align: center;
+}
+
+.textover figcaption {
+    position: absolute;
+    text-shadow: 3px 1px 2px black;
+    font-size: 25px;
+    padding: 50px;
+    bottom: 30px;
+}
+
+img.float1 {
+    border-radius: 50px;
+    max-height: 75px;
+    max-width: 75px;
+
+}
+
+img.float2 {
+    border-radius: 500px;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    margin: 0 auto 20px auto;
+}
+
+.gallerySort {
+    float: right;
+}
+
+h2.title {
+    margin: 0 25%;
+}
+
+div.left {
+    float: left;
+    width: 50%;
+}
+
+div.right {
+    float: right;
+    width: 50%;
+}
+
+.banner {
+    display: block;
+    width: 100%;
+    max-width: 1091px;
+    max-height: 403px;
+    margin: 0 auto 0px auto;
+}
+
+#subtitle {
+    font-style: italic;
+    font-weight: normal;
+}
+
+#content {
+    font-size: large;
+}
+
+.container-video {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 660px) {
+    div.left, div.right{
+        float: none;
+        width: 100%;
+        font-size: smaller;
+        text-align: left;
+   }
+
+   .smaller {
+    font-size: smaller;
+    text-align: left
+   }
+
+    .sneaky {
+        display: none;
+    }
+
+    .gallerySort {
+        float: none;
+        width: 100;
+        padding-left: 40%;
+        padding-top: 10px;
+    }
+
+    pre {
+        font-size: small;
+    }
+
+    .grid {
+        flex-wrap:nowrap;
+        white-space: wrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    .textover {
+        display: flex;
+        flex-shrink: 0;
+        width:auto;
+    }
+    
+}
