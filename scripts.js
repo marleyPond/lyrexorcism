@@ -163,9 +163,9 @@ function decorateTitle(lyric_title, link, author, release_date, genre, id) {
         There is something that goes here that is super interesting, intruiging das;lfjds;lakfj;lkasdjf;lasdkjf asd;lkjf a;lskdjf ;lasksdjf ;laskdjf ;lkasdjf ;laskdjf ;lkasjdf;l kjasd;lkf j
     `;
 
-    var a = `<a class="not_stylish" href=/lyrics/`+link+`.html>`;
+    var a = "/lyrics/"+link+".html".toString();
     if(link.includes(":"))
-        a = `<a class="not_stylish" href=`+link+`>`;
+        a = link;
     return `
             <div class="banner pop" onClick="expand(`+id+`)" style="padding: 10px 0 0 0;">
                 <div>
@@ -184,7 +184,9 @@ function decorateTitle(lyric_title, link, author, release_date, genre, id) {
                     <table style="width: 100%;">
                         <tr style="font-weight: bolder;">
                             <td style="text-align: center; width: 80%;">` + lyric_preview + `</td>
-                            <td style="text-align: center;">` + author + `</td>
+                            <td style="text-align: center;">
+                                <button onclick="preview_button('/lyrics/` + link + `.html')">Preview Page</button>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -193,11 +195,22 @@ function decorateTitle(lyric_title, link, author, release_date, genre, id) {
 }
 
 function expand(id) {
+    if (Number(window[`currently_expanded`]) == id){
+        document.getElementById(id).classList.remove("expand");
+        window[`currently_expanded`] = "-1";
+        window['current_preview_page'] = null;
+        return
+    }
     if (Number(window[`currently_expanded`]) >= 0) {
         document.getElementById(Number(window[`currently_expanded`])).classList.remove("expand");
     }
     document.getElementById(id).classList.add("expand");
     window[`currently_expanded`] = id;
+
+}
+
+function preview_button(link) {
+    window.location.replace(link);
 }
 
 function OLD_decorateTitle(s, l, c) {
