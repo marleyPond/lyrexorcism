@@ -185,7 +185,7 @@ function decorateTitle(lyric_title, link, author, release_date, genre, id) {
                         <tr style="font-weight: bolder;">
                             <td style="text-align: center; width: 80%;">` + lyric_preview + `</td>
                             <td style="text-align: center;">
-                                <button onclick="preview_button('/lyrics/` + link + `.html')">Preview Page</button>
+                                <button class="lyric_button" onclick="preview_button('/lyrics/` + link + `.html')"><div class="lyric_icon">👻</div></button>
                             </td>
                         </tr>
                     </table>

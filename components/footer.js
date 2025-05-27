@@ -27,11 +27,8 @@
         -->
         <footer>
         <ul>
-            <!--
-            <li><a href="/portfolio/main.html">portfolio</a></li>
-            <li><a href="/creations.html">creations</a></li>
             <li><a href="/about.html">about</a></li>
-            -->
+            <li><a href="/team.html">team</a></li>
         </ul>
 
     </footer>
