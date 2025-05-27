@@ -61,6 +61,11 @@ pre {
 }
 
 .coin:hover {
+    animation: flip 2s alternate infinite;
+}
+
+.spinning_coin {
+    transition: transform .5s ease-out;
     animation: flip 1s alternate infinite;
 }
 
@@ -69,7 +74,7 @@ pre {
         transform: scaleX(1);
     }
     to {
-        transform: scaleX(0);
+        transform: scaleX(.0);
     }
 }
 
