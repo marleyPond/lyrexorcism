@@ -151,6 +151,18 @@ figure {
     background-color:palevioletred;
 }
 
+.expandable {
+    visibility: collapse;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.expand {
+    visibility:visible;
+    transform: scaleY(1);
+}
+
 figure:hover {
     padding: 4px;
     border-style: dashed;

@@ -6,6 +6,7 @@ function loadContent() {
     window['final'] = json['all'].length-1;
     window['filterData'] = [];
     window['galleryDisplayAmount'] = 9;
+    window['currently_expanded'] = -1;
     loadBlogs(json, "none");
     //updateFilterCounts(); 
  }
@@ -67,15 +68,15 @@ function isReleased(now, releaseDate){
 function loadBlogs(data, filter) {
     var blogStack = ``;
     
-    if(data === null){  //bypass
-        if(current >= final) return;
-        for(var i = current; i < Math.min(current + galleryDisplayAmount, final); i++){
-            blogStack += decorateTitle(filterData[i].title, filterData[i].fileName, filterData[i].imageCategoryName);
-        };
-        //blogStack = addEmptyFigures(blogStack, 2); //buffer, leave for max columns-1
-        document.getElementById("blog-content").innerHTML = blogStack;
-        return;
-    }
+    // if(data === null){  //bypass
+    //     if(current >= final) return;
+    //     for(var i = current; i < Math.min(current + galleryDisplayAmount, final); i++){
+    //         blogStack += decorateTitle(filterData[i].title, filterData[i].fileName, filterData[i].imageCategoryName);
+    //     };
+    //     //blogStack = addEmptyFigures(blogStack, 2); //buffer, leave for max columns-1
+    //     document.getElementById("blog-content").innerHTML = blogStack;
+    //     return;
+    // }
 
     var allData = data.all;
     
@@ -87,7 +88,7 @@ function loadBlogs(data, filter) {
 
     for(var i = 0; i < Math.min(galleryDisplayAmount, final); i++){
         blogStack += decorateTitle(filterData[i].title, filterData[i].fileName, filterData[i].author,
-        filterData[i].releaseDate, filterData[i].genre);
+        filterData[i].releaseDate, filterData[i].genre, i);
     };
 
     document.getElementById("blog-content").innerHTML = blogStack;
@@ -138,7 +139,7 @@ function loadPoems(now) {
     document.getElementById('smButton').addEventListener("click", toggleSM);
 }
 
-function decorateTitle(lyric_title, link, author, release_date, genre) {
+function decorateTitle(lyric_title, link, author, release_date, genre, id) {
     release_date = release_date.toString()
     var date = new Date(release_date)
     date.setFullYear(
@@ -149,13 +150,26 @@ function decorateTitle(lyric_title, link, author, release_date, genre) {
     var options = {year: 'numeric', month: 'long', day: 'numeric'};
     var pretty_date = `${date.toLocaleString('en-US', options)}`;
 
+    var count = lyric_title.length
+    
+    if (count > 2) {
+        lyric_title = 
+            lyric_title.substring(0,1) + 
+            `<u>` + lyric_title.substring(1, count-1) + `</u>` +
+            lyric_title.substring(count-1, count)
+    }
+
+    var lyric_preview = `
+        There is something that goes here that is super interesting, intruiging das;lfjds;lakfj;lkasdjf;lasdkjf asd;lkjf a;lskdjf ;lasksdjf ;laskdjf ;lkasdjf ;laskdjf ;lkasjdf;l kjasd;lkf j
+    `;
+
     var a = `<a class="not_stylish" href=/lyrics/`+link+`.html>`;
     if(link.includes(":"))
         a = `<a class="not_stylish" href=`+link+`>`;
-    return a + `
-            <div class="banner pop" style="padding: 10px 0;">
+    return `
+            <div class="banner pop" onClick="expand(`+id+`)" style="padding: 10px 0 0 0;">
                 <div>
-                    <table style="width: 100%;">
+                    <table style="width: 100%; color:white;">
                         <tr style="font-weight: bolder;">
                             <td style="text-align: center;">` + lyric_title + `</td>
                             <td style="text-align: center;">` + author + `</td>
@@ -166,14 +180,24 @@ function decorateTitle(lyric_title, link, author, release_date, genre) {
                         </tr>
                     </table>
                 </div>
-                <!--
-                <div>
-                    <span>This is the lyric title </span>
-                    <span style="float:right;">Auther, McAuthorlady</span>
+                <div id="` + id + `" class="expandable" style="background-color: grey;">
+                    <table style="width: 100%;">
+                        <tr style="font-weight: bolder;">
+                            <td style="text-align: center; width: 80%;">` + lyric_preview + `</td>
+                            <td style="text-align: center;">` + author + `</td>
+                        </tr>
+                    </table>
                 </div>
-                -->
             </div>
-            </a>`;
+            `;
+}
+
+function expand(id) {
+    if (Number(window[`currently_expanded`]) >= 0) {
+        document.getElementById(Number(window[`currently_expanded`])).classList.remove("expand");
+    }
+    document.getElementById(id).classList.add("expand");
+    window[`currently_expanded`] = id;
 }
 
 function OLD_decorateTitle(s, l, c) {
