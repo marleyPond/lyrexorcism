@@ -57,7 +57,7 @@ pre {
 }
 
 .coin {
-    transition: transform .5s ease-out;
+    transition: transform 1s;
 }
 
 .coin:hover {
@@ -66,7 +66,8 @@ pre {
 
 .spinning_coin {
     transition: transform .5s ease-out;
-    animation: flip 1s alternate infinite;
+    animation: flip 1.5s alternate infinite;
+    display: -webkit-inline-box;
 }
 
 @keyframes flip {
@@ -75,6 +76,22 @@ pre {
     }
     to {
         transform: scaleX(.0);
+    }
+}
+
+.float {
+    animation: float 2s alternate infinite;
+    transition: transform .5s ease-in-out;
+    font-size: x-large;
+    padding-bottom: 0;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(5);
+    }
+    to {
+        transform: translateY(-5px);
     }
 }
 

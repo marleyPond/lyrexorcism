@@ -29,6 +29,9 @@
         <ul>
             <li><a href="/about.html">about</a></li>
             <li><a href="/team.html">team</a></li>
+            <li>
+                <img src="/images/lyrexorcism_logo.png" style="max-width:40px; max-height:40px; border-radius:20px;"></img>
+            </li>
         </ul>
 
     </footer>
