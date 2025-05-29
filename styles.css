@@ -65,8 +65,7 @@ pre {
 }
 
 .spinning_coin {
-    transition: transform .5s ease-out;
-    animation: flip 1.5s alternate infinite;
+    animation: flip .75s alternate infinite;
     display: -webkit-inline-box;
 }
 
