@@ -12,7 +12,7 @@ function loadBlog() {
 function loadPageTitle() {
     var page_title = ``;                          //ALTER THIS<~ 1
     document.getElementById('title').innerHTML = 
-    category;
+    page_title;
 }
 
 function loadTitle() {

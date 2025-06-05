@@ -5,7 +5,7 @@ function loadContent() {
     window['current'] = 0;
     window['final'] = json['all'].length-1;
     window['filterData'] = [];
-    window['galleryDisplayAmount'] = 9;
+    window['galleryDisplayAmount'] = 10;
     window['currently_expanded'] = -1;
     loadBlogs(json, "none");
     //updateFilterCounts(); 
@@ -68,15 +68,14 @@ function isReleased(now, releaseDate){
 function loadBlogs(data, filter) {
     var blogStack = ``;
     
-    // if(data === null){  //bypass
-    //     if(current >= final) return;
-    //     for(var i = current; i < Math.min(current + galleryDisplayAmount, final); i++){
-    //         blogStack += decorateTitle(filterData[i].title, filterData[i].fileName, filterData[i].imageCategoryName);
-    //     };
-    //     //blogStack = addEmptyFigures(blogStack, 2); //buffer, leave for max columns-1
-    //     document.getElementById("blog-content").innerHTML = blogStack;
-    //     return;
-    // }
+    if(data === null){  //bypass
+        if(current >= final) return;
+        for(var i = current; i < Math.min(current + galleryDisplayAmount, final); i++){
+            blogStack += decorateTitle(filterData[i], i);
+        };
+        document.getElementById("blog-content").innerHTML = blogStack;
+        return;
+    }
 
     var allData = data.all;
     
@@ -87,8 +86,7 @@ function loadBlogs(data, filter) {
     /*load new blogs to top of list*/
 
     for(var i = 0; i < Math.min(galleryDisplayAmount, final); i++){
-        blogStack += decorateTitle(filterData[i].title, filterData[i].fileName, filterData[i].author,
-        filterData[i].releaseDate, filterData[i].genre, i);
+        blogStack += decorateTitle(filterData[i], i);
     };
 
     document.getElementById("blog-content").innerHTML = blogStack;
@@ -139,8 +137,8 @@ function loadPoems(now) {
     document.getElementById('smButton').addEventListener("click", toggleSM);
 }
 
-function decorateTitle(lyric_title, link, author, release_date, genre, id) {
-    release_date = release_date.toString()
+function decorateTitle(data, id) {
+    var release_date = data.releaseDate.toString()
     var date = new Date(release_date)
     date.setFullYear(
         release_date.substring(0,4),
@@ -150,32 +148,30 @@ function decorateTitle(lyric_title, link, author, release_date, genre, id) {
     var options = {year: 'numeric', month: 'long', day: 'numeric'};
     var pretty_date = `${date.toLocaleString('en-US', options)}`;
 
-    var count = lyric_title.length
+    var count = data.title.length
     
+    var lyric_title = data.title
+
     if (count > 2) {
         lyric_title = 
-            lyric_title.substring(0,1) + 
-            `<u>` + lyric_title.substring(1, count-1) + `</u>` +
-            lyric_title.substring(count-1, count)
+            data.title.substring(0,1) + 
+            `<u>` + data.title.substring(1, count-1) + `</u>` +
+            data.title.substring(count-1, count)
     }
 
-    var lyric_preview = `
-        There is something that goes here that is super interesting, intruiging das;lfjds;lakfj;lkasdjf;lasdkjf asd;lkjf a;lskdjf ;lasksdjf ;laskdjf ;lkasdjf ;laskdjf ;lkasjdf;l kjasd;lkf j
-    `;
-
-    var a = "/lyrics/"+link+".html".toString();
-    if(link.includes(":"))
-        a = link;
+    var a = "/lyrics/"+data.fileName+".html".toString();
+    if(data.fileName.includes(":"))
+        a = data.fileName;
     return `
             <div class="banner pop" onClick="expand(`+id+`)" style="padding: 10px 0 0 0;">
                 <div>
                     <table style="width: 100%; color:white;">
                         <tr style="font-weight: bolder;">
-                            <td style="text-align: center;">` + lyric_title + `</td>
-                            <td style="text-align: center;">` + author + `</td>
+                            <td style="text-align: center; width: 65%;">` + lyric_title + `</td>
+                            <td style="text-align: center;">` + data.author + `</td>
                         </tr>
                         <tr style="color: #dddddd">
-                            <td style="text-align: center;">` + genre + `</td>
+                            <td style="text-align: center;">` + data.genre + `</td>
                             <td style="text-align: center;">` + pretty_date + `</td>
                         </tr>
                     </table>
@@ -183,9 +179,9 @@ function decorateTitle(lyric_title, link, author, release_date, genre, id) {
                 <div id="` + id + `" class="expandable" style="background-color: grey;">
                     <table style="width: 100%;">
                         <tr style="font-weight: bolder;">
-                            <td style="text-align: center; width: 80%;">` + lyric_preview + `</td>
+                            <td style="text-align: center; width: 80%;">` + data.abstract + `</td>
                             <td style="text-align: center;">
-                                <button class="lyric_button" onclick="preview_button('/lyrics/` + link + `.html')"><div class="lyric_icon">👻</div></button>
+                                <button class="lyric_button" onclick="preview_button('` + a + `')"><div class="lyric_icon">👻</div></button>
                             </td>
                         </tr>
                     </table>
@@ -260,61 +256,46 @@ function prepareJSON() {    //yearMonthDay, where 00 => January and 01->1st
         "all": 
         [   
             {
-                "title": "Active Listening and Reactive Narrative Design", 
-                "releaseDate": 20240501,
-                "fileName": "template", 
+                "title": "Event Horizon", 
+                "releaseDate": 20250605,
+                "fileName": "mp-event-horizon", 
                 "author": "Marley Pond",
-                "genre": "Metal",
+                "genre": "Club Anthem",
+                "abstract": "A boisterous, love-sick club anthem that gives voice to the feeling of intoxicating limerence.",
             },
             {
-                "title": "Active Listening and Reactive Narrative Design", 
-                "releaseDate": 20240601,
-                "fileName": "template", 
+                "title": "Hit Maker", 
+                "releaseDate": 20250605,
+                "fileName": "mp-hit-maker", 
                 "author": "Marley Pond",
-                "genre": "Metal",
+                "genre": "Pop",
+                "abstract": "A brooding playfulness cloaks this sassy pop hit.",
             },
             {
-                "title": "Active Listening and Reactive Narrative Design", 
-                "releaseDate": 20240601,
-                "fileName": "template", 
+                "title": "Hot Takeover", 
+                "releaseDate": 20250605,
+                "fileName": "mp-hot-takeover", 
                 "author": "Marley Pond",
-                "genre": "Metal",
+                "genre": "Pop",
+                "abstract": "A colorful critique of anti-social media, wrapped in rhymes and pun-ishment.",
             },
-            {
-                "title": "Active Listening and Reactive Narrative Design", 
-                "releaseDate": 20240601,
-                "fileName": "template", 
+             {
+                "title": "Kiss My Apocalypse", 
+                "releaseDate": 20250605,
+                "fileName": "mp-kiss-my-apocalypse", 
                 "author": "Marley Pond",
-                "genre": "Metal",
+                "genre": "Pop",
+                "abstract": "A pop anthem that expresses the chaotic youthful experience of overwhelm at finding oneself, belonging, and love.",
             },
-            {
-                "title": "Active Listening and Reactive Narrative Design", 
-                "releaseDate": 20240601,
-                "fileName": "template", 
+             {
+                "title": "Mare's Nest", 
+                "releaseDate": 20250605,
+                "fileName": "mp-mares-nest", 
                 "author": "Marley Pond",
-                "genre": "Metal",
+                "genre": "Folk",
+                "abstract": "A quirky folk journey playing with meaning, perspective, and acceptance.",
             },
-            {
-                "title": "Active Listening and Reactive Narrative Design", 
-                "releaseDate": 20240601,
-                "fileName": "template", 
-                "author": "Marley Pond",
-                "genre": "Metal",
-            },
-            {
-                "title": "Active Listening and Reactive Narrative Design", 
-                "releaseDate": 20240601,
-                "fileName": "template", 
-                "author": "Marley Pond",
-                "genre": "Metal",
-            },
-            {
-                "title": "Active Listening and Reactive Narrative Design", 
-                "releaseDate": 20240601,
-                "fileName": "template", 
-                "author": "Marley Pond",
-                "genre": "Metal",
-            },
+
         ]
     };
 }
