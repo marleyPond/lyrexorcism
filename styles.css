@@ -27,6 +27,31 @@ pre {
     font-size: large;
 }
 
+.filter_scan button{
+    background-color: black;
+    color: white;
+    transition: background-color .5s ease-out;
+}
+
+.filter_scan button:hover{
+    background-color: palevioletred;
+}
+
+.filter_scan select{
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 2em;
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color .5s ease-out;
+}
+
+.filter_scan select:hover{
+    background-color: palevioletred;
+}
+
 .lyric_button {
     width: 100px;
     height: 50px;

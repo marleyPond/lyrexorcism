@@ -82,16 +82,16 @@ function loadBlogs(data, filter) {
     }
 
     var allData = data.all;
-    console.log(filter);
+    // console.log(filter);
 
     var filterArgs = d => now - d.releaseDate >= 0 && (d.genre.match(filter));
     if (filter.includes("Marley")){
         filterArgs = d => now - d.releaseDate >= 0 && (d.author.match(filter));
-        console.log("_auth");
+        // console.log("_auth");
     }
     else if (filter == "none") {
         filterArgs = d => now - d.releaseDate >= 0;
-        console.log("_null");
+        // console.log("_null");
     }
     filterData = allData.filter(filterArgs);
     final = filterData.length;
