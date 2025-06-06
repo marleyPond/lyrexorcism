@@ -37,18 +37,21 @@
         <div>
             <div style="text-align: center;">
                 <label for="gsort"></label>
-                <!-- <table style="width: 100%;">
+                <table style="width: 100%;">
                     <tr>
-                        <td style="width:50%;"><button onclick="tryLeft()" style="width:100%;"><i class="material-icons" style="font-size:xx-large; border-radius: 50px;" >arrow_back</i></button></td>
-                        <td style="width:50%;"><button onclick="tryRight()" style="width:100%;"><i class="material-icons" style="font-size:xx-large; border-radius: 50px;">arrow_forward</i></button></td>
+                        <td style="width:33%;"><button onclick="tryLeft()" style="width:100%;"><i class="material-icons" style="font-size:xx-large; border-radius: 50px;" >arrow_back</i></button></td>
+                        <td style="width:33%;">
+                            <select name="gsort" id="gsort" onchange="filterUpdate(this.value)">
+                            <option id="c_all" value="none"></option>
+                            <option id="c_a_marley" value="Marley Pond">Marley Pond</option>
+                            <option id="c_g_club-anthem" value="Club Anthem">Club Anthem</option>
+                            <option id="c_g_folk" value="Folk">Folk</option>
+                            <option id="c_g_pop" value="Pop">Pop</option>
+                            </select>
+                        </td>
+                        <td style="width:33%;"><button onclick="tryRight()" style="width:100%;"><i class="material-icons" style="font-size:xx-large; border-radius: 50px;">arrow_forward</i></button></td>
                     </tr>
-                </table> -->
-                <!--<select name="gsort" id="gsort" onchange="filterUpdate(this.value)">
-                <option id="c_all" value="none"></option>
-                <option id="cbranchingpathcast" value="sqyt">YouTube</option>
-                <option id="cblog" value="sqblog">Blog</option>
-                <option id="cmisc" value="cmisc">Misc</option>
-                </select>-->
+                </table> 
             </div>
         </div>
         <div id="blog-content" style=" cursor: pointer;"></div>

@@ -8,7 +8,7 @@ function loadContent() {
     window['galleryDisplayAmount'] = 10;
     window['currently_expanded'] = -1;
     loadBlogs(json, "none");
-    //updateFilterCounts(); 
+    updateFilterCounts(); 
  }
 
 
@@ -25,17 +25,21 @@ function updateFilterCounts() {
     tempFilterData = json.all.filter(tempFilterArgs);
     document.getElementById("c_all").innerHTML += "all" + " [" + tempFilterData.length +"]";
 
-    tempFilterArgs = d => now - d.releaseDate >= 0 && d.imageCategoryName.includes("sqyt");
+    tempFilterArgs = d => now - d.releaseDate >= 0 && d.author.match("Marley Pond");
     tempFilterData = json.all.filter(tempFilterArgs);
-    document.getElementById("cbranchingpathcast").innerHTML += " [" + tempFilterData.length +"]";
+    document.getElementById("c_a_marley").innerHTML += " [" + tempFilterData.length +"]";
 
-    tempFilterArgs = d => now - d.releaseDate >= 0 && d.imageCategoryName == "sqblog";
+    tempFilterArgs = d => now - d.releaseDate >= 0 && d.genre.match("Club Anthem");
     tempFilterData = json.all.filter(tempFilterArgs);
-    document.getElementById("cblog").innerHTML += " [" + tempFilterData.length +"]";
+    document.getElementById("c_g_club-anthem").innerHTML += " [" + tempFilterData.length +"]";
 
-    tempFilterArgs = d => now - d.releaseDate >= 0 && d.imageCategoryName.match("cmisc");
+    tempFilterArgs = d => now - d.releaseDate >= 0 && d.genre.match("Folk");
     tempFilterData = json.all.filter(tempFilterArgs);
-    document.getElementById("cmisc").innerHTML += " [" + tempFilterData.length +"]";
+    document.getElementById("c_g_folk").innerHTML += " [" + tempFilterData.length +"]";
+
+    tempFilterArgs = d => now - d.releaseDate >= 0 && d.genre.match("Pop");
+    tempFilterData = json.all.filter(tempFilterArgs);
+    document.getElementById("c_g_pop").innerHTML += " [" + tempFilterData.length +"]";
 }
 
 function filterUpdate(v){
@@ -78,8 +82,17 @@ function loadBlogs(data, filter) {
     }
 
     var allData = data.all;
-    
-    var filterArgs = d => now - d.releaseDate >= 0 && (filter == 'none' || filter.includes(d.imageCategoryName) || filter == 'none' || d.imageCategoryName.includes(filter));
+    console.log(filter);
+
+    var filterArgs = d => now - d.releaseDate >= 0 && (d.genre.match(filter));
+    if (filter.includes("Marley")){
+        filterArgs = d => now - d.releaseDate >= 0 && (d.author.match(filter));
+        console.log("_auth");
+    }
+    else if (filter == "none") {
+        filterArgs = d => now - d.releaseDate >= 0;
+        console.log("_null");
+    }
     filterData = allData.filter(filterArgs);
     final = filterData.length;
     current = 0;
