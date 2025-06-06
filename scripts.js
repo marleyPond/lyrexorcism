@@ -267,7 +267,14 @@ function toggleSM() {   //for drop class above
 function prepareJSON() {    //yearMonthDay, where 00 => January and 01->1st
     return {
         "all": 
-        [   
+        [   {
+                "title": "The Smallest Pangolin", 
+                "releaseDate": 20250606,
+                "fileName": "mp-the-smallest-pangolin", 
+                "author": "Marley Pond",
+                "genre": "Metal",
+                "abstract": "A pangolin reflects on her more formative experiences, and how it shaped her lifestyle .",
+            },
             {
                 "title": "Shadenfreudian Slip", 
                 "releaseDate": 20250606,
