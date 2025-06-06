@@ -269,6 +269,14 @@ function prepareJSON() {    //yearMonthDay, where 00 => January and 01->1st
         "all": 
         [   
             {
+                "title": "Shadenfreudian Slip", 
+                "releaseDate": 20250606,
+                "fileName": "mp-shadenfreudian-slip", 
+                "author": "Marley Pond",
+                "genre": "Club Anthem",
+                "abstract": "The frozen moment, amongst the settling dust, amidst the pursuit of clout.",
+            },
+            {
                 "title": "Event Horizon", 
                 "releaseDate": 20250605,
                 "fileName": "mp-event-horizon", 
@@ -300,7 +308,7 @@ function prepareJSON() {    //yearMonthDay, where 00 => January and 01->1st
                 "genre": "Pop",
                 "abstract": "A pop anthem that expresses the chaotic youthful experience of overwhelm at finding oneself, belonging, and love.",
             },
-             {
+            {
                 "title": "Mare's Nest", 
                 "releaseDate": 20250605,
                 "fileName": "mp-mares-nest", 
