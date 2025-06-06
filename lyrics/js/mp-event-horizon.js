@@ -36,7 +36,7 @@ function loadBody() {
     document.getElementById('blog-content').innerHTML =                 //ALTER THIS<~ 5
     `
     <p> 
-    There’s something thrumming in the atmosphere,</br></br>
+    There’s something thrumming in the atmosphere,</br>
     I fear I’ll blink and all will disappear,</br>
     I’ve waited so long, the anticipation cresting,</br>
     No time to rest, I’m gonna engage my engine</br></br>

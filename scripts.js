@@ -185,7 +185,7 @@ function decorateTitle(data, id) {
                         </tr>
                         <tr style="color: #dddddd">
                             <td style="text-align: center;">` + data.genre + `</td>
-                            <td style="text-align: center;">` + pretty_date + `</td>
+                            <td style="text-align: center; visibility: hidden;">` + pretty_date + `</td>
                         </tr>
                     </table>
                 </div>
